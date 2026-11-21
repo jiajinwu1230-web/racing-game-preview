@@ -1,0 +1,73 @@
+:root { --pink: #ff2d87; --cyan: #55dfff; --white: #f7f8fa; }
+* { box-sizing: border-box; }
+html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; background: #8aa0b1; }
+body { font-family: "Noto Sans TC", "Barlow Condensed", sans-serif; }
+#game { position: fixed; inset: 0; width: 100%; height: 100%; }
+.cinematic { position:fixed; inset:0; pointer-events:none; z-index:2; background:
+  linear-gradient(180deg, rgba(120,170,210,.10), transparent 35%, rgba(18,28,22,.10)),
+  radial-gradient(circle at 50% 48%, transparent 48%, rgba(8,16,20,.28) 100%);
+  mix-blend-mode: multiply;
+}
+#hud { position: fixed; inset: 0; pointer-events: none; color: white; text-shadow: 0 2px 5px rgba(0,0,0,.45); }
+.topbar { position: absolute; top: 28px; left: 34px; display: flex; align-items: flex-start; gap: 18px; }
+.brand { display: flex; align-items: center; filter: drop-shadow(0 3px 7px rgba(0,0,0,.3)); }
+.brand-mark { display:grid; place-items:center; width:46px; height:46px; margin-right:7px; border:3px solid white; border-radius:50%; font:800 30px "Barlow Condensed"; transform: rotate(-8deg); }
+.brand b { display:block; font:800 25px "Barlow Condensed"; letter-spacing: 2px; line-height:20px; }
+.brand small { color:var(--cyan); font:800 13px "Barlow Condensed"; letter-spacing:7px; }
+.position { height:46px; display:flex; align-items:center; padding:0 12px; border-left:2px solid rgba(255,255,255,.7); }
+.position strong { font:800 34px "Barlow Condensed"; }
+.position span { margin:4px 0 0 4px; font:700 16px "Barlow Condensed"; opacity:.75; }
+.route { position:absolute; top:34px; right:38px; display:flex; align-items:center; width:300px; }
+.route-dot { width:10px; height:10px; border:2px solid white; border-radius:50%; box-shadow:0 0 10px white; }
+.route-line { height:3px; flex:1; background:rgba(255,255,255,.35); overflow:hidden; }
+.route-line i { display:block; width:12%; height:100%; background:var(--cyan); box-shadow:0 0 8px var(--cyan); }
+.route-check { font-size:16px; color:#fff; margin-left:-1px; }
+.speedometer { position:absolute; left:28px; bottom:18px; width:220px; height:140px; }
+.speedometer svg { position:absolute; width:220px; height:140px; overflow:visible; }
+.gauge-bg, .gauge-fill { fill:none; stroke-linecap:round; stroke-width:8; }
+.gauge-bg { stroke:rgba(255,255,255,.22); }
+.gauge-fill { stroke:var(--pink); stroke-dasharray:314; stroke-dashoffset:314; filter:drop-shadow(0 0 5px rgba(255,45,135,.8)); }
+.ticks line { stroke:rgba(255,255,255,.8); stroke-width:2; }
+.speed-readout { position:absolute; left:0; right:0; bottom:16px; text-align:center; }
+.speed-readout strong { display:block; font:800 66px "Barlow Condensed"; line-height:60px; letter-spacing:-3px; }
+.speed-readout span { display:block; font:700 10px "Barlow Condensed"; letter-spacing:2px; opacity:.8; }
+.gear { position:absolute; right:25px; bottom:8px; width:30px; height:30px; display:grid; place-items:center; border:2px solid rgba(255,255,255,.8); border-radius:50%; font:800 18px "Barlow Condensed"; }
+.minimap { position:absolute; right:24px; bottom:24px; width:220px; height:220px; border-radius:50%; overflow:hidden; background:rgba(15,29,39,.38); border:2px solid rgba(255,255,255,.45); box-shadow:0 5px 18px rgba(0,0,0,.25); backdrop-filter:blur(3px); }
+.minimap canvas { width:220px; height:220px; }
+.player-arrow { position:absolute; left:105px; top:100px; width:0; height:0; border-left:6px solid transparent; border-right:6px solid transparent; border-bottom:20px solid #fff; filter:drop-shadow(0 2px 3px rgba(0,0,0,.8)); transform-origin:50% 70%; }
+.progress { position:absolute; right:260px; bottom:32px; text-align:right; }
+.progress span { display:block; font-size:11px; opacity:.75; }
+.progress b { font:700 18px "Barlow Condensed"; }
+.skill { position:absolute; right:275px; top:90px; font:800 24px "Barlow Condensed"; text-align:right; color:#fff; animation:skillPulse 1.2s ease-in-out infinite alternate; }
+.skill small { font-size:11px; letter-spacing:1px; }
+.message { position:absolute; left:50%; top:75px; transform:translateX(-50%); text-align:center; padding:8px 30px; border-top:1px solid rgba(255,255,255,.55); border-bottom:1px solid rgba(255,255,255,.55); }
+.message small { display:block; font-size:10px; letter-spacing:3px; }
+.message strong { display:block; font:800 20px "Barlow Condensed"; letter-spacing:1px; }
+.start-screen { position:fixed; inset:0; z-index:20; color:white; transition:opacity .8s, transform .8s; }
+.start-screen.hidden { opacity:0; transform:scale(1.03); pointer-events:none; }
+.start-bg { position:absolute; inset:0; background:linear-gradient(90deg,rgba(8,15,22,.82) 0%,rgba(8,15,22,.28) 48%,transparent 75%), linear-gradient(0deg,rgba(255,45,135,.12),transparent 35%); }
+.title-card { position:absolute; left:7%; top:18%; }
+.eyebrow { font:700 13px "Barlow Condensed"; letter-spacing:7px; color:#98eaff; }
+.title-card h1 { margin:8px 0 0; font:800 86px "Barlow Condensed"; letter-spacing:-3px; line-height:.85; text-shadow:0 6px 25px rgba(0,0,0,.35); }
+.title-card h1 em { color:var(--pink); font-style:normal; }
+.title-card p { margin:12px 0 32px; font:700 25px "Noto Sans TC"; letter-spacing:8px; }
+#startBtn { pointer-events:auto; border:0; border-radius:3px; padding:15px 22px 15px 28px; background:white; color:#17212a; font:800 18px "Noto Sans TC"; box-shadow:0 8px 30px rgba(0,0,0,.25); cursor:pointer; }
+#startBtn span { margin-left:25px; padding-left:14px; border-left:1px solid #bbb; color:#777; font:700 11px "Barlow Condensed"; }
+#startBtn:hover { background:var(--cyan); }
+.controls { margin-top:17px; font-size:11px; color:rgba(255,255,255,.75); }
+@keyframes skillPulse { to { transform:scale(1.08); color:#7df0ff; } }
+
+@media (max-width: 700px) {
+  .topbar { top:16px; left:16px; transform:scale(.78); transform-origin:top left; }
+  .route { display:none; }
+  .message { top:64px; transform:translateX(-50%) scale(.78); }
+  .minimap { width:150px; height:150px; right:12px; bottom:12px; }
+  .minimap canvas { width:150px; height:150px; }
+  .player-arrow { left:72px; top:66px; }
+  .speedometer { left:8px; bottom:6px; transform:scale(.78); transform-origin:bottom left; }
+  .progress { right:172px; bottom:18px; }
+  .skill { display:none; }
+  .title-card { left:8%; top:20%; }
+  .title-card h1 { font-size:52px; }
+  .title-card p { font-size:18px; }
+}
