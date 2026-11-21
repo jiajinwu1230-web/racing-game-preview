@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HORIZON ZERO — Road Racing</title>
+    <script type="module" crossorigin src="/assets/index-B_otOrX0.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-BsYH1qli.css">
+  </head>
+  <body>
+    <canvas id="game"></canvas>
+    <div class="cinematic"></div>
+
+    <div id="hud">
+      <div class="topbar">
+        <div class="brand">
+          <span class="brand-mark">H</span>
+          <div>
+            <b>HORIZON</b>
+            <small>ZERO</small>
+          </div>
+        </div>
+        <div class="position"><strong id="position">1</strong><span>/6</span></div>
+      </div>
+
+      <div class="route">
+        <span class="route-dot"></span>
+        <div class="route-line"><i id="routeProgress"></i></div>
+        <span class="route-check">◆</span>
+      </div>
+
+      <div class="speedometer">
+        <svg viewBox="0 0 220 140" aria-hidden="true">
+          <path class="gauge-bg" d="M20 120 A100 100 0 0 1 200 120" />
+          <path id="gaugeFill" class="gauge-fill" d="M20 120 A100 100 0 0 1 200 120" />
+          <g class="ticks">
+            <line x1="110" y1="24" x2="110" y2="34" />
+            <line x1="62" y1="35" x2="68" y2="43" />
+            <line x1="158" y1="35" x2="152" y2="43" />
+            <line x1="25" y1="75" x2="36" y2="78" />
+            <line x1="195" y1="75" x2="184" y2="78" />
+          </g>
+        </svg>
+        <div class="speed-readout">
+          <strong id="speed">000</strong>
+          <span>KM/H</span>
+        </div>
+        <div class="gear" id="gear">1</div>
+      </div>
+
+      <div class="minimap">
+        <canvas id="map" width="220" height="220"></canvas>
+        <div class="player-arrow"></div>
+      </div>
+
+      <div class="progress">
+        <span>路線進度</span>
+        <b id="distance">0.0 KM</b>
+      </div>
+
+      <div id="skill" class="skill">2.5x<br><small>疾速行駛</small></div>
+      <div id="message" class="message">
+        <small>主賽事</small>
+        <strong>山海大道衝刺</strong>
+      </div>
+    </div>
+
+    <div id="startScreen" class="start-screen">
+      <div class="start-bg"></div>
+      <div class="title-card">
+        <div class="eyebrow">SAND COAST FESTIVAL</div>
+        <h1>HORIZON <em>ZERO</em></h1>
+        <p>山海大道衝刺</p>
+        <button id="startBtn">開始賽事 <span>ENTER</span></button>
+        <div class="controls">WASD / 方向鍵駕駛　・　空白鍵煞車　・　C 切換視角</div>
+      </div>
+    </div>
+  </body>
+</html>
